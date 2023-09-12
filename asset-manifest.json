@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/stockifyUI/static/css/main.073c9b0a.css",
+    "main.js": "/stockifyUI/static/js/main.364dd053.js",
+    "static/js/787.c0d2472f.chunk.js": "/stockifyUI/static/js/787.c0d2472f.chunk.js",
+    "static/media/logo.svg": "/stockifyUI/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/stockifyUI/index.html",
+    "main.073c9b0a.css.map": "/stockifyUI/static/css/main.073c9b0a.css.map",
+    "main.364dd053.js.map": "/stockifyUI/static/js/main.364dd053.js.map",
+    "787.c0d2472f.chunk.js.map": "/stockifyUI/static/js/787.c0d2472f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.364dd053.js"
+  ]
+}
