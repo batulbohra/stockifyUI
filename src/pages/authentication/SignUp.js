@@ -32,6 +32,7 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
+const baseURL = process.env.REACT_APP_BASE_URL;
 export default function SignUp() {
   const [fName,setFName]=React.useState("");
   const [lName,setLName]=React.useState("");
@@ -71,7 +72,7 @@ export default function SignUp() {
       password: pass,
     };
     try {
-      const response = await axios.post('http://localhost:8080/api/user/signup', formData);
+      const response = await axios.post(`${baseURL}/api/user/signup`, formData);
 
       // Handle success, e.g., show a success message or redirect the user
       navigate("/login")

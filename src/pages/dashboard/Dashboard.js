@@ -35,7 +35,6 @@ import { SettingsPower } from '@mui/icons-material';
 import { logout } from '../authentication/UserSlice';
 import { useDispatch } from "react-redux";
 
-
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -98,6 +97,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
+const baseURL = process.env.REACT_APP_BASE_URL;
 export default function Dashboard() {
   const [open, setOpen] = React.useState(true);
   const [openPopup,setOpenPopup]=React.useState(false);
@@ -127,7 +127,7 @@ const getData = (searchTerm) => {
 
   debounceTimeout = setTimeout(() => {
    
-  fetch("http://localhost:8080/api/stock-listing/ticker-search?query=" + searchTerm, {
+  fetch(`${baseURL}/api/stock-listing/ticker-search?query=` + searchTerm, {
     // signal,
     headers: {
       "Content-Type": "application/json",
@@ -179,7 +179,7 @@ const onInputChange = (event, value, reason) => {
   }
 };
 async function StockDetailAPI(sym) {
-  const url = 'http://localhost:8080/api/stock-listing/stock-detail';
+  const url = `${baseURL}/api/stock-listing/stock-detail`;
   const data = {
     email: user?.email,
     stockName: stock,
@@ -211,7 +211,7 @@ const  getHistoryDataAPI =async(value)=>{
     try {
       // make the request and get the response
       const response = await fetch(
-        `http://localhost:8080/api/stock-listing/stock-price-history?query=${value}`
+          `${baseURL}/api/stock-listing/stock-price-history?query=${value}`
       );
       // check the status code
       if (response.ok) {

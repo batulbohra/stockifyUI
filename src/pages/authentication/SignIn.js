@@ -40,6 +40,7 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
+const baseURL = process.env.REACT_APP_BASE_URL;
 export default function SignIn() {
 
   const user = useSelector(selectUser);
@@ -67,7 +68,7 @@ export default function SignIn() {
         password: data.get('password'),
       };
       // Replace 'YOUR_API_ENDPOINT' with the actual URL of your sign-in API endpoint
-      const response = await axios.post('http://localhost:8080/api/user/login', formData);
+      const response = await axios.post(`${baseURL}/api/user/login`, formData);
   
       // Handle the response here (e.g., store user data in state or local storage)
       await console.log('Sign-in successful:', response.data);

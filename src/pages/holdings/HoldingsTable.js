@@ -15,7 +15,7 @@ const columns = [
   
 ];
 
-
+const baseURL = process.env.REACT_APP_BASE_URL;
 export default function HoldingsTable(props) {
   const user = useSelector(selectUser);
   const [stock,setStock]= useState("");
@@ -46,7 +46,7 @@ function getStockNameBySymbol(arr, symbol) {
   
   }
   async function StockDetailAPI(sym) {
-    const url = 'http://localhost:8080/api/stock-listing/stock-detail';
+    const url = `${baseURL}/api/stock-listing/stock-detail`;
     const data = {
       email: user?.email,
       stockName: stock,
@@ -78,7 +78,7 @@ function getStockNameBySymbol(arr, symbol) {
       try {
         // make the request and get the response
         const response = await fetch(
-          `http://localhost:8080/api/stock-listing/stock-price-history?query=${value}`
+          `${baseURL}/api/stock-listing/stock-price-history?query=${value}`
         );
         // check the status code
         if (response.ok) {

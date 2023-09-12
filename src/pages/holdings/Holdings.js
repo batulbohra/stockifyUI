@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { selectUser } from "../authentication/UserSlice";
 import HoldingGrid from "./HoldingsTable";
 
+const baseURL = process.env.REACT_APP_BASE_URL;
 export default function Holdings(){
   const [data,setData]=useState([]);
   const user = useSelector(selectUser);
@@ -23,7 +24,7 @@ async function getUsrPortfolioapi() {
   try {
     
     console.log(user?.email);
-    const response = await fetch(`http://localhost:8080/api/portfolio/detail?query=${user?.email}`);
+    const response = await fetch(`${baseURL}/api/portfolio/detail?query=${user?.email}`);
     const data = await response.json();
     if(response.status===200){
       await setData(data);
@@ -37,7 +38,7 @@ async function getUsrPortfolioapi() {
 
 async function getUsrWallet() {
   try {
-    const response = await fetch(`http://localhost:8080/api/user/walletBalance?query=${user?.email}`);
+    const response = await fetch(`${baseURL}/api/user/walletBalance?query=${user?.email}`);
     const data = await response.text();
     if(response.status===200){
       if(data){
@@ -72,10 +73,10 @@ return(
       <CardContent>
       
         <Typography variant="h6" sx={{ fontSize: 18 }} >
-            {data.netPortfolioGain?data.netPortfolioGain>0?"Net Profit":"Net Loss":"Loading..."}
+            {data.netPortfolioGain?data.netPortfolioGain>0?"Net Profit":"Net Loss":"Net"}
         </Typography>
         {/*<Typography sx={{ mt: 2 }}  >*/}
-          {data.netPortfolioGain?data.netPortfolioGain>0?<Typography sx={{ mt: 2 }} color='green'>{data.netPortfolioGain}</Typography>:<Typography sx={{ mt: 2 }} color='red'>{data.netPortfolioGain}</Typography>:"Loading..."}
+          {data.netPortfolioGain?data.netPortfolioGain>0?<Typography sx={{ mt: 2 }} color='green'>{data.netPortfolioGain}</Typography>:<Typography sx={{ mt: 2 }} color='red'>{data.netPortfolioGain}</Typography>:"0"}
 
         {/*</Typography>*/}
        </CardContent> 

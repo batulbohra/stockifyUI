@@ -90,7 +90,7 @@ export default function BuyPopUp(props) {
 
   return (
     <div>
-      <Button sx={{bgcolor:"green"}} variant="contained" size="large" onClick={handleClickOpen}>
+      <Button disabled={props.data.curPrice>0?false:true} sx={{bgcolor:"green"}} variant="contained" size="large" onClick={handleClickOpen}>
         BUY
       </Button>
       <Dialog
