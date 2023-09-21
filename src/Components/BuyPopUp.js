@@ -41,9 +41,10 @@ export default function BuyPopUp(props) {
   const handleCloseAlertWarning =()=>{
     setOpenAlertWarning(false);
   }
-      
+
+  const baseURL = process.env.REACT_APP_BASE_URL;
   async function buyStock() {
-    const url = 'http://localhost:8080/api/transaction/buy';
+    const url = `${baseURL}/api/transaction/buy`;
     const data = {
       email: user?.email,
       stockName: props.name,

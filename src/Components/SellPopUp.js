@@ -45,9 +45,9 @@ export default function SellPopUp(props) {
     setOpenAlert(false);
   }
 
-      
+  const baseURL = process.env.REACT_APP_BASE_URL;
   async function sellStock() {
-    const url = 'http://localhost:8080/api/transaction/sell';
+    const url = `${baseURL}/api/transaction/sell`;
     const data = {
       email: user?.email,
       stockName: props.name,
